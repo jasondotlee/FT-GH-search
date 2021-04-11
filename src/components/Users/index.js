@@ -3,15 +3,22 @@ import useQueryUsers from '../../hooks/useQueryUsers';
 import UserCard from './UserCard';
 import './index.css';
 
-const Users = () => {
+const Users = ({search}) => {
   const {
     status: userStatus,
     data: userData,
     error: userError,
     isFetching: userIsFetching,
-  } = useQueryUsers('somedev');
+  } = useQueryUsers(search);
 
-  console.log('333', userStatus, userData?.items, userError, userIsFetching);
+  console.log(
+    '333',
+    search,
+    userStatus,
+    userData?.items,
+    userError,
+    userIsFetching,
+  );
 
   return (
     <>

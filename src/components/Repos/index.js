@@ -1,15 +1,15 @@
 import React from 'react';
 import useQueryRepos from '../../hooks/useQueryRepos';
 import RepoCard from './RepoCard';
-import './index.css'
+import './index.css';
 
-const Repos = () => {
+const Repos = ({search}) => {
   const {
     status: repoStatus,
     data: repoData,
     error: repoFetchError,
     isFetching: repoIsFetching,
-  } = useQueryRepos('somerepo');
+  } = useQueryRepos(search);
 
   return (
     <>

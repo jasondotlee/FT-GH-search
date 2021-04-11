@@ -1,29 +1,39 @@
 import React, {useState} from 'react';
+import debounce from 'lodash/debounce';
 import Users from '../Users';
 import Repos from '../Repos';
 import QueryTypeSelector from '../QuerySelector';
 import './index.css';
 
-
-
 const View = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(null);
+
   const handleInput = event => {
-    console.log(event.target.value);
+    const search = debounce(event => setSearchTerm(event.target.value), 30);
+    search(event);
   };
-  const [selectedOption, setSelectedOption] = useState();
 
   const handleChange = e => {
     setSelectedOption(e);
   };
-  console.log('selectedOption', selectedOption);
   return (
     <>
-      <h1>View</h1>
+      <h1>Flash Tract Github Search</h1>
+      {!selectedOption && <h4>Please select an option</h4>}
       <input onChange={handleInput} type="text"></input>
-      <QueryTypeSelector selectedOption={selectedOption} handler={handleChange} />
+      <QueryTypeSelector
+        selectedOption={selectedOption}
+        handler={handleChange}
+      />
 
-      {selectedOption && selectedOption.value === 1 && <Users />}
-      {selectedOption && selectedOption.value === 2 && <Repos />}
+      {searchTerm?.length > 2 &&
+        selectedOption &&
+        (selectedOption.value === 1 ? (
+          <Users search={searchTerm} />
+        ) : (
+          <Repos search={searchTerm} />
+        ))}
     </>
   );
 };
