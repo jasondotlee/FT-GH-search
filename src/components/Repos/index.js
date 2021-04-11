@@ -1,6 +1,7 @@
 import React from 'react';
 import useQueryRepos from '../../hooks/useQueryRepos';
 import RepoCard from './RepoCard';
+import './index.css'
 
 const Repos = () => {
   const {
@@ -9,15 +10,14 @@ const Repos = () => {
     error: repoFetchError,
     isFetching: repoIsFetching,
   } = useQueryRepos('somerepo');
-  console.log('123123123');
-  console.log('444', repoStatus, repoData, repoFetchError, repoIsFetching);
 
   return (
     <>
-      <div>Repos</div>
-
-      {!repoIsFetching &&
-        repoData.items?.map(repo => <RepoCard repo={repo} key={repo.id} />)}
+      <div className={['repos-container']}>
+        {' '}
+        {!repoIsFetching &&
+          repoData.items?.map(repo => <RepoCard repo={repo} key={repo.id} />)}
+      </div>
     </>
   );
 };
