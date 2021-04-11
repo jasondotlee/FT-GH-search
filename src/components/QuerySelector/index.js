@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import './index.css';
 
-const options = [
+const searchOptions = [
   {
     value: 1,
     label: 'Users',
@@ -19,7 +19,7 @@ const QueryTypeSelector = ({handler, selectedOption}) => {
       <Select
         placeholder="Select Option"
         value={selectedOption}
-        options={options}
+        options={searchOptions}
         onChange={handler}
       />
     </div>

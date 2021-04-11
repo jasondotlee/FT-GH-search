@@ -2,19 +2,21 @@ import React from 'react';
 import get from 'lodash/get';
 import './index.css';
 
-const RepoCard = ({repo}) => {
-  console.log('repo', repo);
+const RepoCard = ({repo, loading}) => {
   const userData = get(repo, 'owner', []);
   const {stargazers_count} = repo;
   const {login, html_url} = userData;
-  console.log('userName', login);
   return (
     <>
-      <div className='card'>
-        <h4></h4>
-
-        <a href={html_url}>{repo.name}</a>
-        <p>StarCount12e12312312312213: {stargazers_count}</p>
+      <div className="card">
+        {!loading ? (
+          <>
+            <a href={html_url}>{repo.name}</a>
+            <p>StarCount: {stargazers_count}</p>
+          </>
+        ) : (
+          <h3>Loading...</h3>
+        )}
       </div>
     </>
   );

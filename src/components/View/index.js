@@ -17,6 +17,7 @@ const View = () => {
   const handleChange = e => {
     setSelectedOption(e);
   };
+
   return (
     <>
       <div className={['view-container']}>

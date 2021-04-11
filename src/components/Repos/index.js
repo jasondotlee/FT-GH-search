@@ -5,11 +5,11 @@ import './index.css';
 
 const Repos = ({search}) => {
   const {
-    status: repoStatus,
     data: repoData,
     error: repoFetchError,
     isFetching: repoIsFetching,
   } = useQueryRepos(search);
+  const mockRepo = {avatar_url: '', html_url: '', login: '', id: ''};
 
   return (
     <>
@@ -17,6 +17,10 @@ const Repos = ({search}) => {
         {' '}
         {!repoIsFetching &&
           repoData.items?.map(repo => <RepoCard repo={repo} key={repo.id} />)}
+        {repoIsFetching &&
+          Array.from(Array(12)).map((el, i) => {
+            return <RepoCard loading={repoIsFetching} repo={mockRepo} />;
+          })}
       </div>
     </>
   );

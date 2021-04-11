@@ -1,0 +1,9 @@
+.user-img {
+  width: 100px;
+}
+
+.user-card-container {
+  width: auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
