@@ -1,4 +1,9 @@
 .dropdown {
-  width: 400px;
+  display: grid;
   color: black;
+  grid-row: 3;
+  grid-column: 2;
+  width: 100px;
+  justify-self: start;
+  align-self: center;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import './index.css'
+import './index.css';
 
 const options = [
   {
@@ -15,13 +15,14 @@ const options = [
 
 const QueryTypeSelector = ({handler, selectedOption}) => {
   return (
-    <Select
-      className="dropdown"
-      placeholder="Select Option"
-      value={selectedOption}
-      options={options}
-      onChange={handler}
-    />
+    <div className="dropdown">
+      <Select
+        placeholder="Select Option"
+        value={selectedOption}
+        options={options}
+        onChange={handler}
+      />
+    </div>
   );
 };
 

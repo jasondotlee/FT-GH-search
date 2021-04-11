@@ -10,7 +10,7 @@ const View = () => {
   const [searchTerm, setSearchTerm] = useState(null);
 
   const handleInput = event => {
-    const search = debounce(event => setSearchTerm(event.target.value), 30);
+    const search = debounce(event => setSearchTerm(event.target.value), 500);
     search(event);
   };
 
@@ -19,21 +19,26 @@ const View = () => {
   };
   return (
     <>
-      <h1>Flash Tract Github Search</h1>
-      {!selectedOption && <h4>Please select an option</h4>}
-      <input onChange={handleInput} type="text"></input>
-      <QueryTypeSelector
-        selectedOption={selectedOption}
-        handler={handleChange}
-      />
+      <div className={['view-container']}>
+        <h1 className={['view-header']}>Flash Tract Github Search</h1>
 
-      {searchTerm?.length > 2 &&
-        selectedOption &&
-        (selectedOption.value === 1 ? (
-          <Users search={searchTerm} />
-        ) : (
-          <Repos search={searchTerm} />
-        ))}
+        <input className={['input']} onChange={handleInput} type="text"></input>
+        {!selectedOption && (
+          <h4 className={['prompt']}>Please select an option</h4>
+        )}
+        <QueryTypeSelector
+          selectedOption={selectedOption}
+          handler={handleChange}
+        />
+
+        {searchTerm?.length > 2 &&
+          selectedOption &&
+          (selectedOption.value === 1 ? (
+            <Users search={searchTerm} />
+          ) : (
+            <Repos search={searchTerm} />
+          ))}
+      </div>
     </>
   );
 };
