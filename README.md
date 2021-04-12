@@ -13,17 +13,17 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Libraries Used
 
-[React](https://reactjs.org/) |
+[React](https://reactjs.org/)
 
-[React-Query](https://react-query.tanstack.com/overview) |
+[React-Query](https://react-query.tanstack.com/overview)
 
-[Lodash](https://docs-lodash.com/v4/) |
+[Lodash](https://docs-lodash.com/v4/)
 
 [Axios](https://docs-lodash.com/v4/)
 
-#### Notes
+## Notes
 
-- For this implementation, Redux and React router were both not chosen. It seemed that both would add unnecessary overhead for the task at hand.
+- For this implementation, Redux and React router were not chosen. It seemed that both would add unnecessary overhead for the task at hand.
 
   - Instead, `React-Query` was introduced in order to manage queries and state with a smaller and cleaner footprint.
 
@@ -33,7 +33,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 - The project uses React hooks and functional components rather than classical React components.
 
-- The organizational pattern decisions for files and directories were made with readability in mind.
+- The organizational pattern decisions for files and directories were made with readability and ease of navigation in mind.
   
 - All items under "Other Suggestions" are implemented.
   - Lodash was brought in for debouncing data fetching.
