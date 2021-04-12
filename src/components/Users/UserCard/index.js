@@ -16,7 +16,7 @@ const UserCard = ({user, loading}) => {
               <img
                 className={['user-img']}
                 src={avatar_url}
-                alt="profile image"
+                alt="profile avatar"
               />
             </a>
           </>
@@ -29,4 +29,3 @@ const UserCard = ({user, loading}) => {
 };
 export default UserCard;
 
-//  For the users, show the profile picture, name, location, any other data you have and link to their profile.

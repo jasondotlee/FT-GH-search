@@ -1,29 +1,38 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import useQueryUsers from '../../hooks/useQueryUsers';
 import UserCard from './UserCard';
 import './index.css';
-// import useSkeletonLoading from '../../hooks/'
+import {v4 as uuidv4} from 'uuid';
+import sortUsers from '../../utils/sortUsers';
 
-const Users = ({search}) => {
+const Users = ({searchTerm, enableSort}) => {
   const {
     data: userData,
-    error: userError,
+    error: userFetchError,
     isFetching: userIsFetching,
-  } = useQueryUsers(search);
-  const mockUser = {avatar_url: '', html_url: '', login: '', id: ''};
+  } = useQueryUsers(searchTerm);
+  
+  const sortedUsers = useRef([]);
 
+  if (userData && enableSort) {
+    sortedUsers.current = [...userData.items];
+    sortUsers(sortedUsers.current);
+  }
+
+  const theUsers = enableSort ? sortedUsers.current : userData?.items;
+  const mockUser = {avatar_url: '', html_url: '', login: '', id: ''};
   return (
-    <>
-      <div className={['users-container']}>
-        {!userIsFetching &&
-          !userError &&
-          userData.items.map(user => <UserCard user={user} key={user.id} />)}
-        {userIsFetching &&
-          Array.from(Array(12)).map((el, i) => {
-            return <UserCard loading={userIsFetching} user={mockUser} />;
-          })}
-      </div>
-    </>
+    <div className={['users-container']}>
+      {!userIsFetching &&
+        (!userFetchError ?
+        theUsers.map(user => <UserCard user={user} key={user.id} />):<div>Error: {userFetchError}</div>)}
+      {userIsFetching &&
+        Array.from(Array(12)).map(() => {
+          return (
+            <UserCard loading={userIsFetching} user={mockUser} key={uuidv4()} />
+          );
+        })}
+    </div>
   );
 };
 export default Users;
