@@ -27,9 +27,13 @@ const View = () => {
   return (
     <>
       <div className={['view-container']}>
-        <h1 className={['view-header']}>Github Searcher</h1>
+        <div className={['view-header']}>
+          <h2>GitHub Searcher</h2>
+          <p className={['sub-header']}>Search users or repositories below</p>
+        </div>
 
         <input
+          placeholder="Start typing to search..."
           className={['search-input']}
           onChange={handleSearchInput}
           type="text"

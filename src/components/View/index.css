@@ -1,20 +1,21 @@
 .view-container {
   display: grid;
   grid-template-rows: 1fr 0.5fr auto;
-  grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
 }
 .view-header {
   grid-row: 1;
   grid-column: 2;
   justify-self: start;
+  margin: 20px 0 0 0;
 }
 
 .search-input {
   grid-row: 2;
   height: 30px;
-  width: 175px;
-  grid-column: 2/3;
+  width: 200px;
+  grid-column: 2;
   border-radius: 5px;
   justify-self: start;
   border: 1px solid grey;
@@ -24,5 +25,11 @@
 .prompt {
   grid-column: 3;
   grid-row: 2;
-  justify-self: center;
+  justify-self: start;
+  margin-left: 25px;
+}
+
+.sub-header {
+  color: #939393;
+  margin: 0;
 }
